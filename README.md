@@ -1,7 +1,7 @@
-Python highlighting in LaTeX
-============================
+Python highlighting in LaTeX with PT-BR support
+===============================================
 
-A simple Python highlighting style to be used with LaTeX.
+A simple Python highlighting style to be used with LaTeX. This package supports characters of brazilian portuguese.
 
 The package is loaded by the following line:
 

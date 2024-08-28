@@ -1,4 +1,5 @@
 % Copyright 2009--2024 by Olivier Verdier
+% Modified by Rafael 2024--2024
 % License: see the file LICENSE.rst
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{pythonhighlight}[2024/03/18 python code highlighting; provided by Olivier Verdier <olivier.verdier@gmail.com>]
@@ -39,7 +40,7 @@ basicstyle=\ttfamily\footnotesize,%\setstretch{.5},
 stringstyle=\color{stringcolour},
 showstringspaces=false,
 alsoletter={1234567890},
-otherkeywords={\%, \}, \{, \&, \|},
+otherkeywords={\&, \}, \{, \|},
 keywordstyle=\color{keywordcolour}\bfseries,
 emph={and,as,async,await,break,class,continue,def,yield,del,elif ,else,%
 except,exec,finally,for,from,global,if,import,in,%
@@ -51,7 +52,7 @@ emph={[3]object,type,isinstance,copy,deepcopy,zip,enumerate,reversed,list,set,le
 emphstyle=[3]\color{commandcolour},
 emph={Exception,NameError,IndexError,SyntaxError,TypeError,ValueError,OverflowError,ZeroDivisionError},
 emphstyle=\color{exceptioncolour}\bfseries,
-%upquote=true,
+upquote=true,
 morecomment=[s]{"""}{"""},
 commentstyle=\color{commentcolour}\slshape,
 %emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
@@ -65,7 +66,7 @@ emph={[7]range},
 emphstyle={[7]\color{keywordcolour}\bfseries},
 % emph={[7]self},
 % emphstyle=[7]\bfseries,
-literate=*%
+literate=%
 {:}{{\literatecolour:}}{1}%
 {=}{{\literatecolour=}}{1}%
 {-}{{\literatecolour-}}{1}%
@@ -74,6 +75,7 @@ literate=*%
 {**}{{\literatecolour{**}}}2%
 {/}{{\literatecolour/}}{1}%
 {//}{{\literatecolour{//}}}2%
+{\%}{{\literatecolour{\%}}}1%
 {!}{{\literatecolour!}}{1}%
 %{(}{{\literatecolour(}}{1}%
 %{)}{{\literatecolour)}}{1}%
@@ -108,12 +110,66 @@ breakindent=.5\textwidth,frame=single,breaklines=true%
   breakindent=.5\textwidth,
   frame=single,
   breaklines=true,
-  style=pythonhighlight-style
+  style=pythonhighlight-style,
+  literate=
+  {á}{{\'a}}1
+  {à}{{\`a}}1
+  {ã}{{\~a}}1
+  {â}{{\^a}}1
+  {Á}{{\'A}}1
+  {À}{{\`A}}1
+  {Ã}{{\~A}}1
+  {Â}{{\^A}}1
+  {é}{{\'e}}1
+  {ê}{{\^e}}1
+  {É}{{\'E}}1
+  {Ê}{{\^E}}1
+  {í}{{\'i}}1
+  {Í}{{\'I}}1
+  {ó}{{\'o}}1
+  {ô}{{\^o}}1
+  {õ}{{\~o}}1
+  {Ó}{{\'O}}1
+  {Ô}{{\^O}}1
+  {Õ}{{\~O}}1
+  {ú}{{\'u}}1
+  {Ú}{{\'U}}1
+  {ü}{{\"u}}1
+  {Ü}{{\"U}}1
+  {ç}{{\c{c}}}1
   ]{#1}}
 
 \lstnewenvironment{python}[2][]{%
 	\lst@TestEOLChar{#2}%
-	\lstset{style=pythonhighlight-style}%
+	\lstset{
+    style=pythonhighlight-style,
+    literate=
+      {á}{{\'a}}1
+      {à}{{\`a}}1
+      {ã}{{\~a}}1
+      {â}{{\^a}}1
+      {Á}{{\'A}}1
+      {À}{{\`A}}1
+      {Ã}{{\~A}}1
+      {Â}{{\^A}}1
+      {é}{{\'e}}1
+      {ê}{{\^e}}1
+      {É}{{\'E}}1
+      {Ê}{{\^E}}1
+      {í}{{\'i}}1
+      {Í}{{\'I}}1
+      {ó}{{\'o}}1
+      {ô}{{\^o}}1
+      {õ}{{\~o}}1
+      {Ó}{{\'O}}1
+      {Ô}{{\^O}}1
+      {Õ}{{\~O}}1
+      {ú}{{\'u}}1
+      {Ú}{{\'U}}1
+      {ü}{{\"u}}1
+      {Ü}{{\"U}}1
+      {ç}{{\c{c}}}1
+  }%
 	\lstset{#1}%  % has to be in an  extra \lstset{} command so that labels work correctly
 	\csname\@lst @SetFirstNumber\endcsname%
 }{%
@@ -127,32 +183,49 @@ basicstyle=\ttfamily,%
 keywordstyle=\color{keywordcolour},%
 emphstyle={[7]\color{keywordcolour}},%
 emphstyle=\color{exceptioncolour},%
-literate=*%
-{:}{{\literatecolour:}}{2}%
-{=}{{\literatecolour=}}{2}%
-{-}{{\literatecolour-}}{2}%
-{+}{{\literatecolour+}}{2}%
-{*}{{\literatecolour*}}2%
-{**}{{\literatecolour{**}}}3%
-{/}{{\literatecolour/}}{2}%
+literate=%
+{:}{{\literatecolour:}}{1}%
+{=}{{\literatecolour=}}{1}%
+{-}{{\literatecolour-}}{1}%
+{+}{{\literatecolour+}}{1}%
+{*}{{\literatecolour*}}1%
+{**}{{\literatecolour{**}}}2%
+{/}{{\literatecolour/}}{1}%
 {//}{{\literatecolour{//}}}{2}%
-{!}{{\literatecolour!}}{2}%
+{\%}{{\literatecolour{\%}}}{1}%
+{!}{{\literatecolour!}}{1}%
 %{(}{{\literatecolour(}}{2}%
 %{)}{{\literatecolour)}}{2}%
-{[}{{\literatecolour[}}{2}%
-{]}{{\literatecolour]}}{2}%
-{<}{{\literatecolour<}}{2}%
-{<=}{{\literatecolour{<=}}}3%
-{>}{{\literatecolour>}}{2}%
-{>=}{{\literatecolour{>=}}}3%
-{==}{{\literatecolour{==}}}3%
-{!=}{{\literatecolour{!=}}}3%
-{+=}{{\literatecolour{+=}}}3%
-{-=}{{\literatecolour{-=}}}3%
-{*=}{{\literatecolour{*=}}}3%
-{/=}{{\literatecolour{/=}}}3%
+{[}{{\literatecolour[}}{1}%
+{]}{{\literatecolour]}}{1}%
+{<}{{\literatecolour<}}{1}%
+{>}{{\literatecolour>}}{1}%
 %% emphstyle=\color{blue},%
+{á}{{\'a}}1
+{à}{{\`a}}1
+{ã}{{\~a}}1
+{â}{{\^a}}1
+{Á}{{\'A}}1
+{À}{{\`A}}1
+{Ã}{{\~A}}1
+{Â}{{\^A}}1
+{é}{{\'e}}1
+{ê}{{\^e}}1
+{É}{{\'E}}1
+{Ê}{{\^E}}1
+{í}{{\'i}}1
+{Í}{{\'I}}1
+{ó}{{\'o}}1
+{ô}{{\^o}}1
+{õ}{{\~o}}1
+{Ó}{{\'O}}1
+{Ô}{{\^O}}1
+{Õ}{{\~O}}1
+{ú}{{\'u}}1
+{Ú}{{\'U}}1
+{ü}{{\"u}}1
+{Ü}{{\"U}}1
+{ç}{{\c{c}}}1
 }
 
 \newcommand*{\pyth}{\lstinline[style=pythonhighlight-inline-style]}
-

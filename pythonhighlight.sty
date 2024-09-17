@@ -44,11 +44,11 @@ otherkeywords={\&, \}, \{, \|},
 keywordstyle=\color{keywordcolour}\bfseries,
 emph={and,as,async,await,break,class,continue,def,yield,del,elif ,else,%
 except,exec,finally,for,from,global,if,import,in,%
-lambda,not,or,pass,print,raise,return,try,while,assert,with},
+lambda,not,or,pass,raise,return,try,while,assert,with},
 emphstyle=\color{blue}\bfseries,
 emph={[2]True, False, None},
 emphstyle=[2]\color{keywordcolour},
-emph={[3]object,type,isinstance,copy,deepcopy,zip,enumerate,reversed,list,set,len,dict,tuple,xrange,append,execfile,real,imag,reduce,str,repr},
+emph={[3]object,type,isinstance,copy,deepcopy,zip,enumerate,reversed,list,set,len,dict,tuple,xrange,append,execfile,real,imag,input,int,float,complex,bool,print,reduce,str,repr},
 emphstyle=[3]\color{commandcolour},
 emph={Exception,NameError,IndexError,SyntaxError,TypeError,ValueError,OverflowError,ZeroDivisionError},
 emphstyle=\color{exceptioncolour}\bfseries,
@@ -108,9 +108,10 @@ breakindent=.5\textwidth,frame=single,breaklines=true%
   lastline=\IfValueTF{#3}{#3}{9999999},
   frame=single,
   breakindent=.5\textwidth,
-  frame=single,
   breaklines=true,
-  style=pythonhighlight-style,
+  style=pythonhighlight-style,  %Show line numbers
+  numbers=left,     % Show line numbers
+  xleftmargin=2em,  % Space for line numbers show
   literate=
   {á}{{\'a}}1
   {à}{{\`a}}1
@@ -229,3 +230,4 @@ literate=%
 }
 
 \newcommand*{\pyth}{\lstinline[style=pythonhighlight-inline-style]}
+
